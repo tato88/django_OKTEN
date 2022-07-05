@@ -9,6 +9,7 @@ class CarsListCreateView(ListCreateAPIView):
     serializer_class = CarSerializer
 
     def get_queryset(self):
+        # print(self.request.user.id)
         qs = self.queryset.all()
         auto_park_id = self.request.query_params.get('autoParkId')
         if auto_park_id:

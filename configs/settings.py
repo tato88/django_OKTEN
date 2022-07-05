@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # Apps
+    'apps.auth',
     'apps.users',
     'apps.cars',
     'apps.auto_parks'
