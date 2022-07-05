@@ -25,6 +25,11 @@ class UserSerializer(ModelSerializer):
                   'updated_at', 'profile')
         read_only_fields = ('id', 'is_staff', 'is_superuser', 'is_active', 'last_login', 'created_at',
                             'updated_at', 'profile')
+        extra_kwargs = {
+            'password': {
+                'write_only': True
+            }
+        }
 
     @transaction.atomic
     def create(self, validated_data: dict):
