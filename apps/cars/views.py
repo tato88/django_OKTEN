@@ -8,9 +8,14 @@ class CarsListCreateView(ListCreateAPIView):
     queryset = CarModel.objects.all()
     serializer_class = CarSerializer
 
+    def get_queryset(self):
+        qs = self.queryset.all()
+        auto_park_id = self.request.query_params.get('autoParkId')
+        if auto_park_id:
+            qs = qs.filter(auto_park_id=auto_park_id)
+        return qs
+
 
 class CarsRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     queryset = CarModel.objects.all()
     serializer_class = CarSerializer
-
-
