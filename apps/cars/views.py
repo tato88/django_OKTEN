@@ -1,12 +1,14 @@
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import AllowAny
 
 from .models import CarModel
 from .serializers import CarSerializer
 
 
-class CarsListCreateView(ListCreateAPIView):
+class CarsListView(ListAPIView):
     queryset = CarModel.objects.all()
     serializer_class = CarSerializer
+    permission_classes = (AllowAny,)
 
     def get_queryset(self):
         # print(self.request.user.id)
@@ -20,3 +22,4 @@ class CarsListCreateView(ListCreateAPIView):
 class CarsRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     queryset = CarModel.objects.all()
     serializer_class = CarSerializer
+    permission_classes = (AllowAny,)
